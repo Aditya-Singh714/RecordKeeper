@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+  <div class="min-h-screen bg-zinc-900 p-10 text-white">
+    <h1 class="text-3xl font-bold tracking-tight mb-8 text-center">All Users</h1>
+    <div class="users grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <% if (users && users.length) { %>
+        <% users.forEach(function(user) { %>
+          <div class="user bg-zinc-800 rounded-lg shadow-lg overflow-hidden">
+            <div class="w-full h-72 bg-zinc-700 ">
+              <img src="<%= user.image %>" alt="<%= user.name %>" class="w-full h-full object-cover object-top"
+                onerror="this.src='/images/placeholder.png'" />
+            </div>
+            <div class="p-4">
+              <h3 class="text-xl font-semibold">
+                <%= user.name %>
+              </h3>
+              <p class="text-zinc-400 mb-4">
+                <%= user.email %>
+              </p>
+              <div class="flex gap-3">
+                <a href="/edit/<%= user._id %>"
+                  class="flex-1 text-center px-3 py-2 bg-yellow-500 rounded-lg hover:bg-yellow-600 transition">Edit</a>
+                <form action="/delete/<%= user._id %>" class="flex-1">
+                  <button type="submit" class="w-full px-3 py-2 bg-red-500 rounded-lg hover:bg-red-600 transition">
+                    Delete
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <% }); %>
+            <% } else { %>
+              <p class="col-span-full text-center text-zinc-400">
+                No users found. <a href="/" class="text-teal-400 hover:underline">Create one</a>.
+              </p>
+              <% } %>
+    </div>
+  </div>
+</body>
+
+</html>
