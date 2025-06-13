@@ -96,3 +96,15 @@ Notes app
 
 Contact manager
 
+📸 Screenshots
+(Add UI screenshots if available)
+
+🧑‍💻 Author
+Aditya Singh
+LinkedIn • GitHub
+
+yaml
+Copy
+Edit
+
+---
